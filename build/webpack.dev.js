@@ -5,7 +5,7 @@ const path = require("path");
 const devConfig = {
     devServer: {
         host: '0.0.0.0',
-        port: '9000',
+        port: '8185',
         contentBase: path.resolve(__dirname, '../dist'),
         // hot: true,
         headers: { 'Access-Control-Allow-Origin': '*' },

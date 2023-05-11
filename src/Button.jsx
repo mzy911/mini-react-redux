@@ -1,31 +1,42 @@
 import React from 'react';
-import { connect } from '../react-redux'
+import {connect} from '../react-redux'
 
-const Button = ({ count, increment, decrement, decrementNum}) => {
-  console.log('button=====')
+const Button = ({count, increment, decrement, decrementNum}) => {
   return (
-      <div>
-        count: {count}
-        <div style={{ marginTop: '100px' }}>
-          <button onClick={increment}>increment</button>
-          <button onClick={decrement}>decrement</button>
-          <button onClick={decrementNum}>decrement number</button>
-        </div>
+    <div>
+      <h2>子组件 Button</h2>
+      <div style={{marginTop: '20px'}}>
+        <span>操作Redux中的数据：</span>
+        &nbsp;
+        <button onClick={increment}>+ value</button>
+        &nbsp;
+        <button onClick={decrement}>- value</button>
+        &nbsp;
+        <button onClick={decrementNum}>- count</button>
       </div>
+      <div style={{color:'red'}}>
+        value + step: {count}
+      </div>
+    </div>
   )
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        count: state.value + ownProps.step,
-    }
+/**
+ * @param state：redux中的state
+ * @param parentProps：父组件传递的props
+ * @returns {{count: *}}
+ */
+const mapStateToProps = (state, parentProps) => {
+  return {
+    count: state.counterReducer.value + parentProps.step,
+  }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, parentProps) => {
   return {
-    increment: () => dispatch({ type: 'counter/incremented' }),
-    decrement: () => dispatch({ type: 'counter/decremented' }),
-    decrementNum: () => dispatch({ type: 'counter/decrementedNum' }),
+    increment: () => dispatch({type: 'counter/incremented'}),
+    decrement: () => dispatch({type: 'counter/decremented'}),
+    decrementNum: () => dispatch({type: 'counter/decrementedNum'}),
   }
 }
 

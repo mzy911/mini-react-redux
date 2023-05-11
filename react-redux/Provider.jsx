@@ -1,10 +1,10 @@
-import React, { memo } from 'react'
+import React, {memo} from 'react'
 import ReactReduxContext from './Context'
 
-export default memo(({ store, children }) => {
+export default memo(({store, children}) => {
   return (
-      <ReactReduxContext.Provider value={{ store: store}}>
-        { children }
-      </ReactReduxContext.Provider>
+    <ReactReduxContext.Provider value={{store: store}}>
+      {children}
+    </ReactReduxContext.Provider>
   )
 })

@@ -1,12 +1,15 @@
 import React from 'react';
-import { useSelector } from '../react-redux'
+import {useSelector} from '../react-redux'
+
 const Counter = () => {
-  const state = useSelector(state => state.number)
-  console.log('counter====', '计数器', state);
+  const state = useSelector(state => state.counterReducer.number)
   return (
-      <div>
-        计数器：{state}
+    <div>
+      <h2>子组件 Counter</h2>
+      <div style={{color:'red'}}>
+        count：{state}
       </div>
+    </div>
   )
 }
 // const mapStateToProps = (state) => {
@@ -14,8 +17,6 @@ const Counter = () => {
 //     number: state.number,
 //   }
 // }
-
-
 // export default connect(mapStateToProps)(Counter)
 
 
